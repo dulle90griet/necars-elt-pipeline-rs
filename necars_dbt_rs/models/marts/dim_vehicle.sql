@@ -8,7 +8,7 @@ from (
     -- model: all text up to " [N]dr "
     ,regexp_substr(vehicle_description, '.*(?=\\s\\d\\s?dr\\b)', 1, 1, 'ip') as model
     -- door count: the first digit after model (and before "dr")
-    ,regexp_substr(vehicle_description, '\\d', len(model) + 1) as door_count
+    ,cast(regexp_substr(vehicle_description, '\\d', len(model) + 1) as int) as door_count
     -- door count end: a helper value, the index at which the door count substring ends
     ,regexp_instr(vehicle_description, '\\b\\d\\s?dr\\b', len(model) + 1, 1, 1, 'i') as door_count_end
     -- fuel type: any of the matching words, with any number of spaces after it,
