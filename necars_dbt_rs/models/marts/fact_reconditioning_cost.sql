@@ -2,8 +2,8 @@ select
   s_c.sage_ref
   ,s_c.stock_number as stock_id
   ,d_s.supplier_id
-  ,date(s_c.date, 'dd/mm/yyyy hh24:mi') as payment_date
-  ,time(to_timestamp(s_c.date, 'dd/mm/yyyy hh24:mi')) as payment_time
+  ,to_date(s_c.date, 'yyyy-mm-dd') as payment_date
+  ,to_char(s_c.date, 'hh24:mi:ss') as payment_time
   ,s_c.nominal_code
   ,case
     when s_c.nominal_code in (5302, 5303, 5305)
