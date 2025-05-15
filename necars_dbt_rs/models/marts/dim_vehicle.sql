@@ -13,9 +13,9 @@ from (
     ,regexp_instr(vehicle_description, '\\b\\d\\s?dr\\b', len(model) + 1, 1, 1, 'i') as door_count_end
     -- fuel type: any of the matching words, with any number of spaces after it,
     --   one or more times
-    ,regexp_substr(vehicle_description, '\\b(((petrol|diesel|electric|plug-in|plug|in|hybrid)\\s*)+)\\b', door_count_end, 1, 'i') as fuel_type
+    ,regexp_substr(vehicle_description, '\\b(((petrol|diesel|electric|plug(-|\s)*in|hybrid)\\s*)+)\\b', door_count_end, 1, 'i') as fuel_type
     -- fuel start: a helper value, the index at which the fuel substring starts
-    ,regexp_instr(vehicle_description, '\\b(petrol|diesel|electric|plug-in|plug|in|hybrid)', door_count_end, 1, 0, 'i') as fuel_start
+    ,regexp_instr(vehicle_description, '\\b(petrol|diesel|electric|plug(-|\s)*in|hybrid\\b)', door_count_end, 1, 0, 'i') as fuel_start
     -- transmission type: if fuel_type found, the text between door_count and fuel_type
     ,case
       when fuel_start > 0
