@@ -2,11 +2,11 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'necars_dbt'
+name: 'necars_dbt_rs'
 version: '1.0.0'
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'necars_dbt'
+profile: 'necars_dbt_rs'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -30,11 +30,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  necars_dbt:
+  necars_dbt_rs:
     # Config indicated by + and applies to all files under models/example/
     staging:
       +materialized: view
-      snowflake_warehouse: necars_wh
     marts:
       +materialized: table
-      snowflake_warehouse: necars_wh

@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: necars_source
-    database: necars_source_db
+    database: necars_db
     schema: source_schema
     tables:
       - name: vehicle_purchase

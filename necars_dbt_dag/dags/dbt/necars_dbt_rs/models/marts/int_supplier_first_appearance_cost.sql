@@ -7,6 +7,7 @@ select
     ,date as recondition_date
     ,recondition_supplier
 from
-    {{ ref('stg_source_cost') }}
+    -- Redshift requires a FROM-clause alias when immediately preceding QUALIFY
+    {{ ref('stg_source_cost') }} as stg_source_cost
 qualify
     appearance = 1

@@ -7,6 +7,7 @@ select
     ,purchase_invoice_date as purchase_date
     ,vehicle_supplier
 from
-    {{ ref('stg_source_vehicle') }}
+    -- Redshift requires a FROM-clause alias when immediately preceding QUALIFY
+    {{ ref('stg_source_vehicle') }} as stg_source_vehicle
 qualify
     appearance = 1
