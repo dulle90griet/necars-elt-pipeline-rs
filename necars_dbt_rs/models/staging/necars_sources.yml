@@ -9,17 +9,22 @@ sources:
         columns:
           - name: full_stock_number
             tests:
-              - unique
-              - not_null
+              - unique:
+                  tags: [source]
+              - not_null:
+                  tags: [source]
       - name: reconditioning_cost
         columns:
           - name: stock_number
             tests:
-              - not_null
+              - not_null:
+                  tags: [source]
           - name: sage_ref
             tests:
-              - unique
-              - not_null
+              - unique:
+                  tags: [source]
+              - not_null:
+                  tags: [source]
         #       - relationships:
         #           to: source('necars_source', 'vehicle_purchase')
         #           field: "SUBSTRING(full_stock_number, 2)"
