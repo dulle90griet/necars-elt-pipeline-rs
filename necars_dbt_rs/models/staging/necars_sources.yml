@@ -48,6 +48,7 @@ sources:
           - name: quantity
             data_tests:
               - not_null
+              - test_positive_values
           - name: gross_amount
             data_tests:
               - not_null
