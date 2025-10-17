@@ -12,12 +12,28 @@ sources:
             data_tests:
               - unique
               - not_null
+          - name: purchase_invoice_date
+            data_tests:
+              - not_null
           - name: nominal_purchase_code
             data_tests:
               - not_null
               - accepted_values:
                   arguments:
                     values: [5300]
+          - name: make
+            data_tests:
+              - not_null
+          - name: description
+            data_tests:
+              - not_null
+          - name: supplier
+            data_tests:
+              - not_null
+          - name: purchase_price_gbp
+            data_tests:
+              - not_null
+              - test_non_negative_value
       - name: reconditioning_cost
         columns:
           - name: stock_number
@@ -26,7 +42,7 @@ sources:
           - name: net_cost_price
             data_tests:
               - not_null
-              - test_non_negative_values
+              - test_non_negative_value
           - name: nominal_code
             data_tests:
               - accepted_values:
